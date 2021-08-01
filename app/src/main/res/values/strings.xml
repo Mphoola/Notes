@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Notes</string>
+    <string name="note">Note</string>
+    <string name="updated_at">Updated At</string>
+    <string name="todo">TODO</string>
+    <string name="enter_note_title">Enter Note Title</string>
+    <string name="enter_your_note_details">Enter your Note Details</string>
+    <string name="button">Button</string>
+    <string name="filter_image">filter image</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+</resources>
