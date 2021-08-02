@@ -1,9 +1,12 @@
 package com.mphoola.notes
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
@@ -33,8 +36,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     lateinit var toolbarLayout: ImageView
 
     lateinit var toolbar: Toolbar
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navView: NavigationView
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +55,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
         val currentDate = sdf.format(Date())
 
-        val view: View = layoutInflater.inflate(R.layout.nav_header_layout, false)
+        val view: View = layoutInflater.inflate(R.layout.nav_header_layout, null)
         val dateView = view.findViewById<TextView>(R.id.drawer_nav_date)
         dateView?.text = currentDate
-
-        //val view: View = layoutInflater.inflate(R.layout.dialog_dashboard, null)
-        //val toDoName = view.findViewById<EditText>(R.id.add_todo_text)
-
-
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, toolbar_main, 0, 0
@@ -68,9 +66,9 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         toggle.syncState()
         navView.setNavigationItemSelectedListener(this)
 
-        toolbarSearch = findViewById(R.id.toolbar_image_search)
-        toolbarFilter = findViewById(R.id.toolbar_image_filter)
-        toolbarLayout = findViewById(R.id.toolbar_image_layout)
+//        toolbarSearch = findViewById(R.id.toolbar_image_search)
+//        toolbarFilter = findViewById(R.id.toolbar_image_filter)
+//        toolbarLayout = findViewById(R.id.toolbar_image_layout)
 
         notesRV = findViewById(R.id.notes_rv)
         addFAB = findViewById(R.id.floatingActionButton)
@@ -97,6 +95,20 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             startActivity(intent)
             this.finish()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_action_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.toolbar_menu_orientation -> Toast.makeText(this, "Change card view", Toast.LENGTH_LONG).show()
+            R.id.toolbar_menu_search -> Toast.makeText(this, "time to search", Toast.LENGTH_LONG).show()
+            R.id.toolbar_menu_sort -> Toast.makeText(this, "Order item by...", Toast.LENGTH_LONG).show()
+        }
+        return false
     }
 
     override fun onDeleteIconClick(note: Note) {
@@ -133,8 +145,25 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             R.id.nav_share -> {
                 Toast.makeText(this, "Share selected", Toast.LENGTH_LONG).show()
             }
+            R.id.nav_about -> {
+                Toast.makeText(this, "About us selected", Toast.LENGTH_LONG).show()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun onBackPressed() {
+        val dialog  = androidx.appcompat.app.AlertDialog.Builder(this)
+        dialog.setCancelable(false)
+        dialog.setTitle("Are you sure?")
+        dialog.setMessage("You want to Exit?")
+        dialog.setPositiveButton("Yes"){ _: DialogInterface, _: Int ->
+            super.onBackPressed()
+        }
+        dialog.setNegativeButton("No!"){ _: DialogInterface, _: Int ->
+
+        }
+        dialog.show()
     }
 }

@@ -4,10 +4,14 @@ import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.internal.NavigationMenu
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_add_edit_note.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -85,4 +89,21 @@ class AddEditNoteActivity : AppCompatActivity() {
             this.finish()
         }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_action_menu_note_details, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return false
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+
+
 }

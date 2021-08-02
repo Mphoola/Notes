@@ -21,7 +21,7 @@ class NoteRVAdapter(
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         //initializing all the variables which will be added in layout file
         val noteTV: TextView = itemView.findViewById(R.id.idTVNote)
-        val dateTV: TextView = itemView.findViewById(R.id.idTVDate)
+        val detailsTV: TextView = itemView.findViewById(R.id.idTVDetails)
         val deleteIV: ImageView = itemView.findViewById(R.id.idIVDelete)
     }
 
@@ -34,7 +34,7 @@ class NoteRVAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.noteTV.text = allNotes[position].noteTitle
-        holder.dateTV.text = "Last Updated : " + allNotes[position].noteTimeStamp
+        holder.detailsTV.text =  allNotes[position].noteDescription
 
         holder.deleteIV.setOnClickListener {
             val dialog  = androidx.appcompat.app.AlertDialog.Builder(context)

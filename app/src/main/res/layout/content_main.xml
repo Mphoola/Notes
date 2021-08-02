@@ -21,52 +21,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|end"
-            android:orientation="horizontal"
-            android:layout_marginEnd="12dp"
-            >
-
-            <ImageView
-
-                android:id="@+id/toolbar_image_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:contentDescription="@string/todo"
-                app:srcCompat="@drawable/ic_baseline_search_24" />
-
-            <ImageView
-                android:id="@+id/toolbar_image_filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:contentDescription="@string/filter_image"
-                app:srcCompat="@drawable/ic_baseline_filter_list_24" />
-
-            <ImageView
-                android:id="@+id/toolbar_image_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:contentDescription="@string/todo"
-                android:textAlignment="textEnd"
-                app:srcCompat="@drawable/ic_baseline_view_quilt_24" />
-        </LinearLayout>
-
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Main drawer layout-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_rv"
-
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

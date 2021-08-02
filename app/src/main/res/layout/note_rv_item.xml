@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
-    app:cardBackgroundColor="@color/black_shade_2"
-    app:cardCornerRadius="5dp"
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardCornerRadius="10dp"
     app:cardElevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp">
-        
+
         <TextView
+            android:id="@+id/idTVNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/idTVNote"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
+            android:layout_toStartOf="@id/idIVDelete"
+            android:maxLines="1"
             android:padding="4dp"
             android:text="@string/note"
-            android:textSize="18sp"
             android:textColor="@color/white"
-            android:layout_margin="3dp"
-            android:layout_toStartOf="@id/idIVDelete"
-            />
+            android:textSize="18sp" />
 
         <!--text view for displaying our last updated text-->
         <TextView
-            android:id="@+id/idTVDate"
+            android:id="@+id/idTVDetails"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@id/idTVNote"
-            android:layout_margin="3dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
             android:layout_toStartOf="@id/idIVDelete"
+            android:maxLines="2"
             android:padding="4dp"
-            android:text="@string/updated_at"
+            android:text="@string/note_description"
             android:textColor="@color/white"
             android:textSize="13sp" />
 
@@ -44,16 +51,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
             android:layout_marginStart="3dp"
 
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
+            android:contentDescription="@string/todo"
             android:padding="3dp"
-            app:srcCompat="@drawable/ic_delete_24"
-            app:tint="@color/white"
-            android:contentDescription="@string/todo" />
+            app:srcCompat="@drawable/ic_favorites"
+            app:tint="@color/white" />
 
     </RelativeLayout>
 
