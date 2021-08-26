@@ -21,7 +21,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
-            android:layout_toStartOf="@id/idIVDelete"
+            android:layout_toStartOf="@id/idIVFavourite"
             android:maxLines="1"
             android:padding="4dp"
             android:text="@string/note"
@@ -38,7 +38,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
-            android:layout_toStartOf="@id/idIVDelete"
+            android:layout_toStartOf="@id/idIVFavourite"
             android:maxLines="2"
             android:padding="4dp"
             android:text="@string/note_description"
@@ -47,18 +47,17 @@
 
         <!--imageview for displaying delete icon-->
         <ImageView
-            android:id="@+id/idIVDelete"
+            android:id="@+id/idIVFavourite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="3dp"
-
             android:layout_marginTop="3dp"
             android:layout_marginEnd="3dp"
             android:layout_marginBottom="3dp"
             android:contentDescription="@string/todo"
             android:padding="3dp"
-            app:srcCompat="@drawable/ic_favorites"
+            app:srcCompat="@drawable/ic_favoured"
             app:tint="@color/white" />
 
     </RelativeLayout>

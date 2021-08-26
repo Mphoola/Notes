@@ -1,7 +1,5 @@
 package com.mphoola.notes
 
-import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class NoteRVAdapter(
-    val context: Context,
-    private val noteClickDeleteInterface: NoteClickDeleteInterface,
+//    val context: Context,
+    private val noteClickFavouriteInterface: NoteClickFavouriteInterface,
     private val noteClickInterface: NoteClickInterface
 ): RecyclerView.Adapter<NoteRVAdapter.ViewHolder>() {
 
@@ -22,7 +20,7 @@ class NoteRVAdapter(
         //initializing all the variables which will be added in layout file
         val noteTV: TextView = itemView.findViewById(R.id.idTVNote)
         val detailsTV: TextView = itemView.findViewById(R.id.idTVDetails)
-        val deleteIV: ImageView = itemView.findViewById(R.id.idIVDelete)
+        val deleteIV: ImageView = itemView.findViewById(R.id.idIVFavourite)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,24 +34,9 @@ class NoteRVAdapter(
         holder.noteTV.text = allNotes[position].noteTitle
         holder.detailsTV.text =  allNotes[position].noteDescription
 
-        holder.deleteIV.setOnClickListener {
-            val dialog  = androidx.appcompat.app.AlertDialog.Builder(context)
-            dialog.setTitle("Are you sure")
-            dialog.setMessage("You want to delete this?")
-            dialog.setCancelable(false)
+        holder.deleteIV.setOnClickListener { noteClickFavouriteInterface.onFavouriteIconClick(allNotes[position]) }
 
-            dialog.setPositiveButton("Yes"){ _: DialogInterface, _: Int ->
-                noteClickDeleteInterface.onDeleteIconClick(allNotes[position])
-            }
-            dialog.setNegativeButton("No!"){ _: DialogInterface, _: Int ->
-
-            }
-            dialog.show()
-        }
-
-        holder.itemView.setOnClickListener {
-            noteClickInterface.onNoteClick(allNotes[position])
-        }
+        holder.itemView.setOnClickListener { noteClickInterface.onNoteClick(allNotes[position]) }
     }
 
     override fun getItemCount(): Int {
@@ -69,8 +52,8 @@ class NoteRVAdapter(
         notifyDataSetChanged() //notify adpter of the change
     }
 
-    interface NoteClickDeleteInterface {
-        fun onDeleteIconClick(note: Note)
+    interface NoteClickFavouriteInterface {
+        fun onFavouriteIconClick(note: Note)
     }
 
     interface NoteClickInterface {

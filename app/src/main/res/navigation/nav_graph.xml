@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<navigation
+    android:id="@+id/nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mphoola.notes.ui.home.HomeFragment"
+        android:label="All Notes"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment"
+            app:enterAnim="@anim/splash_in"
+            app:exitAnim="@anim/splash_out" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_labelsFragment"
+            app:destination="@id/labelsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_trashedFragment"
+            app:destination="@id/trashedFragment"
+            app:enterAnim="@anim/splash_out"
+            app:exitAnim="@anim/splash_in"
+            app:popEnterAnim="@anim/splash_in" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mphoola.notes.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.mphoola.notes.ui.addNew.AddNoteFragment"
+        android:label="Note details"
+        tools:layout="@layout/add_note_fragment" >
+
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.mphoola.notes.ui.favourites.FavouritesFragment"
+        android:label="Favourites"
+        tools:layout="@layout/favourites_fragment" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.mphoola.notes.ui.about.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/labelsFragment"
+        android:name="com.mphoola.notes.ui.labels.LabelsFragment"
+        android:label="Labels"
+        tools:layout="@layout/labels_fragment" />
+    <fragment
+        android:id="@+id/trashedFragment"
+        android:name="com.mphoola.notes.ui.trashed.TrashedFragment"
+        android:label="Trashed"
+        tools:layout="@layout/trashed_fragment" />
+</navigation>

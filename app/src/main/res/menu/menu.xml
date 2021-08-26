@@ -1,19 +1,21 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/homeFragment"
             android:icon="@drawable/ic_home"
             android:title="All Notes" />
         <item
-            android:id="@+id/nav_favourites"
+            android:id="@+id/favouritesFragment"
             android:icon="@drawable/ic_favorites"
             android:title="Favourites" />
         <item
-            android:id="@+id/nav_trash"
+            android:id="@+id/trashedFragment"
             android:icon="@drawable/ic_delete_24"
             android:title="Trashed" />
         <item
-            android:id="@+id/nav_label"
+            android:id="@+id/labelsFragment"
             android:icon="@drawable/ic_label"
             android:title="Labels" />
     </group>
@@ -21,7 +23,7 @@
     <item android:title="General">
         <menu>
             <item
-                android:id="@+id/nav_settings"
+                android:id="@+id/settingsFragment"
                 android:title="Settings"
                 android:icon="@drawable/ic_settings" />
             <item
@@ -29,7 +31,7 @@
                 android:title="Share"
                 android:icon="@drawable/ic_share" />
             <item
-                android:id="@+id/nav_about"
+                android:id="@+id/aboutFragment"
                 android:title="About Us"
                 android:icon="@drawable/ic_baseline_info_24" />
         </menu>
