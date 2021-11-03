@@ -1,11 +1,11 @@
 package com.mphoola.notes
 
-import android.content.pm.ActivityInfo
-import android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -13,20 +13,19 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //NavigationView.OnNavigationItemSelectedListener,
-    //    NoteRVAdapter.NoteClickInterface, NoteRVAdapter.NoteClickDeleteInterface
-//    lateinit var viewModal: NoteViewModal
-//    lateinit var notesRV: RecyclerView
- //   private lateinit var addFAB: FloatingActionButton
-
-    lateinit var appBarConfiguration: AppBarConfiguration
-
+    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navController: NavController
+    private lateinit var tvFavouritesCounter: TextView
+    private lateinit var tvLabelsCounter: TextView
+    private lateinit var tvTrashedCounter: TextView
+    private lateinit var tvNotesCounter: TextView
+    private lateinit var mainActivityViewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +43,29 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
         NavigationUI.setupWithNavController(nav_view, navController)
 
+        //drawer nav item counter
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        tvNotesCounter = navView.menu.findItem(R.id.homeFragment)
+                            .actionView.findViewById(R.id.notes_counter_view)
+
+        tvFavouritesCounter = navView.menu.findItem(R.id.favouritesFragment)
+                            .actionView.findViewById(R.id.favourites_counter_view)
+
+        tvTrashedCounter = navView.menu.findItem(R.id.trashedFragment)
+                            .actionView.findViewById(R.id.trashed_counter_view)
+
+        tvLabelsCounter = navView.menu.findItem(R.id.labelsFragment)
+                            .actionView.findViewById(R.id.labels_counter_view)
+
+        mainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+
+        println("note count: " + mainActivityViewModel.allNotesCount.toString())
+
+        tvNotesCounter.text = "10"
+        tvLabelsCounter.text = "0"
+        tvTrashedCounter.text = "1"
+        tvFavouritesCounter.text = "3"
     }
 
 //    }

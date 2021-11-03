@@ -20,7 +20,7 @@ class NoteRVAdapter(
         //initializing all the variables which will be added in layout file
         val noteTV: TextView = itemView.findViewById(R.id.idTVNote)
         val detailsTV: TextView = itemView.findViewById(R.id.idTVDetails)
-        val deleteIV: ImageView = itemView.findViewById(R.id.idIVFavourite)
+        val favouriteIV: ImageView = itemView.findViewById(R.id.idIVFavourite)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,10 +31,13 @@ class NoteRVAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if (allNotes[position].favourite == "1") {
+            holder.favouriteIV.setBackgroundResource(R.drawable.ic_starred)
+        }
         holder.noteTV.text = allNotes[position].noteTitle
         holder.detailsTV.text =  allNotes[position].noteDescription
 
-        holder.deleteIV.setOnClickListener { noteClickFavouriteInterface.onFavouriteIconClick(allNotes[position]) }
+        holder.favouriteIV.setOnClickListener { noteClickFavouriteInterface.onFavouriteIconClick(allNotes[position]) }
 
         holder.itemView.setOnClickListener { noteClickInterface.onNoteClick(allNotes[position]) }
     }

@@ -38,7 +38,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mphoola.notes.ui.settings.SettingsFragment"
-        android:label="SettingsFragment" />
+        android:label="Settings" />
     <fragment
         android:id="@+id/addNoteFragment"
         android:name="com.mphoola.notes.ui.addNew.AddNoteFragment"
@@ -50,7 +50,11 @@
         android:id="@+id/favouritesFragment"
         android:name="com.mphoola.notes.ui.favourites.FavouritesFragment"
         android:label="Favourites"
-        tools:layout="@layout/favourites_fragment" />
+        tools:layout="@layout/favourites_fragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+    </fragment>
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.mphoola.notes.ui.about.AboutFragment"

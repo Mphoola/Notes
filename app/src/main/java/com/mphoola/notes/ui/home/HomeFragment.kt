@@ -1,6 +1,5 @@
 package com.mphoola.notes.ui.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +24,7 @@ class HomeFragment : Fragment(), NoteRVAdapter.NoteClickInterface, NoteRVAdapter
     private lateinit var viewModel: HomeViewModel
     lateinit var binding: HomeFragmentBinding
     lateinit var noteRV: RecyclerView
+    lateinit var noteFavourite: String
 
 
     override fun onCreateView(
@@ -70,6 +70,18 @@ class HomeFragment : Fragment(), NoteRVAdapter.NoteClickInterface, NoteRVAdapter
     }
 
     override fun onFavouriteIconClick(note: Note) {
-        Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+        noteFavourite = when {
+            (note.favourite == "1") -> {
+                "0"
+            }
+            else -> {
+                "1"
+            }
+        }
+        val result = when{
+            (noteFavourite == "1") -> {"Note marked as favourite"}else->{"Note favoured updated"}
+        }
+        viewModel.updateNoteFavourite(note.id, noteFavourite)
+        Toast.makeText(context, result, Toast.LENGTH_LONG).show()
     }
 }

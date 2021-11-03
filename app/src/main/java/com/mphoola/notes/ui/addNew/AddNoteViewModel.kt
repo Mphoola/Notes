@@ -28,17 +28,6 @@ class AddNoteViewModel(application: Application) : AndroidViewModel(application)
         inputDescription
     }
 
-    fun insert(){
-        val sdf = SimpleDateFormat("dd MMM, yyyy - HH:mm")
-        val currentDateAndTime: String = sdf.format(Date())
-        val title: String = inputTitle.value!!
-        val description: String = inputDescription.value!!
-        addNote(Note(title, description, currentDateAndTime))
-        inputDescription.value = ""
-        inputTitle.value = ""
-
-    }
-
     fun addNote(note: Note) = viewModelScope.launch(Dispatchers.IO){
         repository.insert(note)
     }

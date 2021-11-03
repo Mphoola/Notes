@@ -16,9 +16,24 @@ interface NotesDao {
     suspend fun delete(note: Note)
 
     //writing a custom query to the db
-    @Query("SELECT * FROM notesTable ORDER BY id DESC")
+    @Query("SELECT * FROM notesTable WHERE trashed='0' ORDER BY id DESC")
     fun getAllNotes(): LiveData<List<Note>>
+
+    @Query("SELECT COUNT(*) FROM notesTable WHERE trashed='0'")
+    fun getAllNotesCount() : LiveData<Int>
+
+    @Query("SELECT * FROM notesTable WHERE favourite='1' ORDER BY id DESC")
+    fun getAllFavourites(): LiveData<List<Note>>
+
+    @Query("SELECT * FROM notesTable WHERE trashed='1' ORDER BY id DESC")
+    fun getAllTrashed(): LiveData<List<Note>>
 
     @Update
     suspend fun update(note: Note)
+
+    @Query("UPDATE notesTable SET favourite=:favourite WHERE id=:id")
+    suspend fun markAsFavourite(id: Int, favourite: String)
+
+    @Query("UPDATE notesTable SET trashed=:trashed WHERE id=:id")
+    suspend fun moveToTrash(id: Int, trashed: String)
 }

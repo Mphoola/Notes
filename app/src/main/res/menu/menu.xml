@@ -1,23 +1,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/homeFragment"
             android:icon="@drawable/ic_home"
-            android:title="All Notes" />
+            android:title="All Notes"
+            app:actionLayout="@layout/drawer_menu_notes_counter"/>
         <item
             android:id="@+id/favouritesFragment"
             android:icon="@drawable/ic_favorites"
-            android:title="Favourites" />
+            android:title="Favourites"
+            app:actionLayout="@layout/drawer_menu_favourites_counter"/>
         <item
             android:id="@+id/trashedFragment"
             android:icon="@drawable/ic_delete_24"
-            android:title="Trashed" />
+            android:title="Trashed"
+            app:actionLayout="@layout/drawer_menu_trashed_counter"/>
         <item
             android:id="@+id/labelsFragment"
             android:icon="@drawable/ic_label"
-            android:title="Labels" />
+            android:title="Labels"
+            app:actionLayout="@layout/drawer_menu_labels_counter"/>
     </group>
 
     <item android:title="General">

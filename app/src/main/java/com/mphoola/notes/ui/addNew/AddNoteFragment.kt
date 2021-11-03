@@ -57,13 +57,14 @@ class AddNoteFragment : Fragment() {
                     val currentDateAndTime: String = sdf.format(Date())
 
                     if (editing){
-                        val updatedNote = Note(noteTitle, noteDescription, currentDateAndTime)
+                        val updatedNote = Note(noteTitle, noteDescription, "0", "0", "#296D98", currentDateAndTime)
                        updatedNote.id = arguments?.getInt("id", -1)!!
                         viewModel.updateNote(updatedNote)
                         findNavController().navigateUp()
-                        Toast.makeText(context, "$updatedNote", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "Note updated...", Toast.LENGTH_LONG).show()
                     }else{
-                        viewModel.addNote(Note(noteTitle, noteDescription, currentDateAndTime))
+                        viewModel.addNote(
+                            Note(noteTitle, noteDescription, "0", "0", "#296D98", currentDateAndTime))
                         Toast.makeText(context, "Note added...", Toast.LENGTH_LONG).show()
                         findNavController().navigateUp()
                     }

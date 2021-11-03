@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/cardView"
     android:layout_margin="5dp"
     app:cardBackgroundColor="@color/colorAccent"
     app:cardCornerRadius="10dp"
@@ -57,7 +58,7 @@
             android:layout_marginBottom="3dp"
             android:contentDescription="@string/todo"
             android:padding="3dp"
-            app:srcCompat="@drawable/ic_favoured"
+            app:srcCompat="@drawable/ic_favorites"
             app:tint="@color/white" />
 
     </RelativeLayout>
